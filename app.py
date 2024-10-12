@@ -8,13 +8,7 @@ from constants import intro_message, linkedin_url
 st.set_page_config(
     page_title="kavali-kranthi-kumar-portfolio",
     layout="wide",
-    page_icon="🧑‍💻",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"}
-    )
+    page_icon="🧑‍💻")
 
 
 initialize_variable(name="shown_intro_message", default=True)
