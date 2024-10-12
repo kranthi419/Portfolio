@@ -44,11 +44,11 @@ st.write("""
 st.subheader('👨‍🎓 Certifications:')
 with st.container():
     col = st.columns(3, gap="small")
-    col[2].image(resize_image(f"C:/Personal-LLM-Projects/Portfolio-Website/data/DL specilization.jpg", 200),
+    col[2].image(resize_image(f"./data/DL specilization.jpg", 200),
                  caption="Deep Learning Specialization")
-    col[1].image(resize_image(f"C:/Personal-LLM-Projects/Portfolio-Website/data/Oracle Cloud Infrastructure 2024 Generative AI Certified Professional.png", 250),
+    col[1].image(resize_image(f"./data/Oracle Cloud Infrastructure 2024 Generative AI Certified Professional.png", 250),
                  caption="Oracle Cloud Infrastructure 2024 Generative AI Certified Professional")
-    col[0].image(resize_image(f"C:/Personal-LLM-Projects/Portfolio-Website/data/ML specialition.jpeg", 250),
+    col[0].image(resize_image(f"./data/ML specialition.jpeg", 250),
                  caption="Machine Learning Specialization")
 
 st.subheader('📝Research Papers:')
