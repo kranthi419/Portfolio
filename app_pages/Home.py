@@ -1,14 +1,21 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 from utils.helpers import resize_image
 from constants import info_about_me
 
 
-st.subheader('🙋‍♂️ About me:')
-st.write(info_about_me)
+st.markdown("<h2 style='margin-bottom:0'>🙋‍♂️ About me:</h2>", unsafe_allow_html=True)
+info_cols = st.columns([2, 1])
+with info_cols[0]:
+    st.markdown("### Kavali Kranthi Kumar")
+    st.markdown("##### 📌Hyderabad, India")
+    st.write(info_about_me)
+with info_cols[1]:
+    components.iframe("https://lottie.host/embed/4db26c4d-f195-4d1a-b0f0-ca43f2da848f/OOC3aEi0X4.json", height=400)
 
 
-st.subheader('🔧 My Skills:')
+st.markdown("<h2 style='margin-bottom:0'>🔧 Skills:</h2>", unsafe_allow_html=True)
 st.write("""
 [![](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen)](https://www.python.org)  [![](https://img.shields.io/badge/Machine-Learning-000?style=for-the-badge)](https://en.wikipedia.org/wiki/Machine_learning)
 [![](https://img.shields.io/badge/DL-Deep%20Learning-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Deep_learning)
@@ -40,8 +47,7 @@ st.write("""
 
 **Still Many More.....**""", unsafe_allow_html=True)
 
-
-st.subheader('👨‍🎓 Certifications:')
+st.markdown("<h2 style='margin-bottom:0'>👨‍🎓 Certifications:</h2>", unsafe_allow_html=True)
 with st.container():
     col = st.columns(3, gap="small")
     col[2].image(resize_image(f"./data/DL specilization.jpg", 200),
@@ -51,6 +57,8 @@ with st.container():
     col[0].image(resize_image(f"./data/ML specialition.jpeg", 250),
                  caption="Machine Learning Specialization")
 
-st.subheader('📝Research Papers:')
+st.markdown("<h2 style='margin-bottom:0'>📝 Research Works And Publications:</h2>", unsafe_allow_html=True)
 st.markdown("[<h5><u>Iris recognition based on Gabor and Deep Convolutional Networks</h5>](https://ieeexplore.ieee.org/document/9484905)", unsafe_allow_html=True)
+st.markdown("Nowadays, authorizing a person has become a significant need. Authorizing a person based on their behavioral or characteristic traits such as fingerprint, iris, face, etc. has brought in a lot of secure feelings in society. In our work, we present Iris-based Biometric systems that have been considered the most secure and accurate form of identifying an individual because of their unique features and textual richness present in them. In our work, we proposed two modified feature extraction techniques namely Convolutional Neural Networks (CNN) and Gabor filter, and then performed different classification algorithms namely SVM (Support Vector Machine) and Neural Networks (NN), and analyzed the change in accuracies affected by the features extracted from the two different techniques and finally landed with the best combination of CNN-NN with the accuracy of 98%. The CASIA Version 1 benchmark database has been used to perform our experiments for both testing and comparison.")
 st.markdown("[<h5><u>Effective Deep Learning approach based on VGG-Mini Architecture for Iris Recognition</h5>](http://annalsofrscb.ro/index.php/journal/article/view/5760)", unsafe_allow_html=True)
+st.markdown("Biometric system is a pattern recognition system that works by collecting biometric data from a user, extracting a feature set from that data, and comparing that feature set to a database template set. Through this paper, we propose a biometric recognition system based on iris recognition. Iris is the most secured and unique biometric trait among other biometric traits. In our work, we have proposed a modified Hough Transform and considered the Mini-VGG Net model without its weights, and trained the network to obtain the best features. Using the Neural Networks, we have performed the classification and obtained Accuracy, Precision, and Recall of 98%, 0.99, and 0.99 respectively. Our experiments were performed on the CASIA Version-1, which includes 756 samples of iris in 108 folders with 7 samples having dimensions 280X320 each.")

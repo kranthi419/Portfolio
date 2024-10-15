@@ -9,4 +9,8 @@ import base64
 #     st.markdown(pdf_display, unsafe_allow_html=True)
 
 with st.container(border=True):
+    with open("./data/Kavali_Kranthi_Kumar_ML_Engineer.pdf", "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        href = f'<a href="data:application/pdf;base64,{base64_pdf}" download="Kavali_Kranthi_Kumar_ML_Engineer.pdf" style="text-decoration:none;"><b>👋 Click Here To Download Resume 📄</b></a>'
+        st.markdown(href, unsafe_allow_html=True)
     pdf_viewer("./data/Kavali_Kranthi_Kumar_ML_Engineer.pdf")
