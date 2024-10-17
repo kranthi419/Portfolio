@@ -14,7 +14,6 @@ def initialize_variable(name, default=None):
         st.session_state[name] = default
 
 
-
 def resize_image(image_path, target_height):
     img = Image.open(image_path)
     width, height = img.size
