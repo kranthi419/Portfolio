@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -78,9 +80,12 @@ with chat_popup_col.popover("🤖ResumeGPT📄", use_container_width=True):
     if st.session_state.api_key is None:
         st.write("Please enter your OpenAI API key to start chatting.")
         st.text_input("**OpenAI API Key:**", type="password", key="api_key")
-    if not st.session_state.api_key.startswith("sk-"):
+    if st.session_state.api_key and not st.session_state.api_key.startswith("sk-"):
         st.warning("Please enter valid OpenAI API key to start chatting.")
         st.text_input("**OpenAI API Key:**", type="password", key="api_key")
+
+    if st.session_state.api_key and st.session_state.api_key.startswith("sk-"):
+        os.environ["OPENAI_API_KEY"] = st.session_state.api_key
     # Clear Chat button
     clear_col, api_api_input = st.columns([1, 3])
     with clear_col:
