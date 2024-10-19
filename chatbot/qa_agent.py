@@ -1,6 +1,19 @@
 import streamlit as st
-
+import openai
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+
+
+def check_if_openai_api_key_valid(api_key):
+    client = openai.OpenAI(api_key=api_key)
+    print("checking if API key is valid")
+    try:
+        client.models.list()
+        print("API key is valid")
+    except Exception as e:
+        print(f"API key is invalid: {e}")
+        st.sidebar.error(f"Error: {e}")
+        return False
+    return True
 
 
 def display_chat_history():
@@ -17,7 +30,6 @@ def clear_chat():
     st.session_state.messages = []
 
 
-@st.cache_resource
 def initialize_qa_chain():
     documents = SimpleDirectoryReader("./data/resume").load_data()
     index = VectorStoreIndex.from_documents(documents)

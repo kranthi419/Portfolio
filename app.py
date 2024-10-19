@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import streamlit.components.v1 as components
 
-from chatbot.qa_agent import add_message, display_chat_history, clear_chat, run
+from chatbot.qa_agent import add_message, display_chat_history, clear_chat, run, check_if_openai_api_key_valid
 from utils.helpers import stream_data, initialize_variable
 from constants import intro_message, linkedin_url
 
@@ -36,9 +36,17 @@ projects_page = st.Page(page="app_pages/Projects.py", title="Expertise:")
 pg = st.navigation({"Application:": [home_page, projects_page, resume_page]})
 pg.run()
 
-
 initialize_variable(name="messages", default=[])
-initialize_variable(name="api_key", default=None)
+
+# todo: Make the OpenAI API key a session state variable
+openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+openai_api_key_set = True
+if openai_api_key.startswith("sk-") and check_if_openai_api_key_valid(openai_api_key):
+    openai_api_key_set = False
+    os.environ["OPENAI_API_KEY"] = openai_api_key
+else:
+    st.sidebar.warning("Please enter your OpenAI API key!", icon="⚠")
+
 # Custom CSS for larger popover and other styling
 st.markdown("""
 <style>
@@ -75,19 +83,12 @@ footer { visibility: hidden; }
 }
 </style>
 """, unsafe_allow_html=True)
-chat_popup_col, _ = st.columns([2, 2])
-with chat_popup_col.popover("🤖ResumeGPT📄", use_container_width=True):
-    if st.session_state.api_key is None:
-        st.write("Please enter your OpenAI API key to start chatting.")
-        st.text_input("**OpenAI API Key:**", type="password", key="api_key")
-    if st.session_state.api_key and not st.session_state.api_key.startswith("sk-"):
-        st.warning("Please enter valid OpenAI API key to start chatting.")
-        st.text_input("**OpenAI API Key:**", type="password", key="api_key")
 
-    if st.session_state.api_key and st.session_state.api_key.startswith("sk-"):
-        os.environ["OPENAI_API_KEY"] = st.session_state.api_key
+chat_popup_col, _ = st.columns([2, 2])
+with chat_popup_col.popover("🤖ResumeGPT📄", use_container_width=True, disabled=openai_api_key_set,
+                            help="**Please enter your OpenAI API key to enable the chatbot**"):
     # Clear Chat button
-    clear_col, api_api_input = st.columns([1, 3])
+    clear_col, _ = st.columns([1, 3])
     with clear_col:
         if st.button("Clear Chat💬", key="clear_chat", help="Clear the chat history"):
             clear_chat()
