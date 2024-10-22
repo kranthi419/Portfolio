@@ -17,10 +17,13 @@ with info_cols[1]:
 st.markdown("<h2 style='margin-bottom:0'>👨‍💻 Experience:</h2>", unsafe_allow_html=True)
 st.markdown("### Senior Machine Learning Engineer at [**Synopsys Inc**](https://www.synopsys.com/)")
 st.markdown("##### 📆 2024, June - Present")
-st.markdown("Innomatics Research Labs is a pioneer in the field of Data Science and AI. I work as a Machine Learning Engineer and my responsibilities include developing and deploying machine learning models, training and mentoring interns, and working on real-time projects.")
+st.markdown("Exploring and creating LLM and machine learning-based rest api applications, including a proof-of-concept for integrating Oracle Digital Assistant into a current platform to improve knowledge and workflow support.")
 st.markdown("### Machine Learning Engineer 2 at [**Phenom**](https://www.phenom.com/)")
 st.markdown("##### 📆 2021, June - 2024, June")
-st.markdown("I worked as a Data Science Intern at Innomatics Research Labs. I have worked on various projects and gained experience in Machine Learning, Deep Learning, and Natural Language Processing.")
+st.markdown("""
+Collaborated daily with cross-functional teams, including developers, product managers, and quality engineers, to produce high-quality cloud-based AI/ML solutions.•Development of Natural Language Understanding (NLU) Algorithms using GAI LLMs (Provider OpenAI).•Led  the  implementation  of  a  robust  question-answering  system,  leveraging  GAI  for improved accuracy and  efficiency  and  also, fine-tuned  models  to  deliver  precise  responses  across  various  domains  and  use cases.•Pioneered  the  development  of  an  automated  system  to  generate  question-and-answer  pairs  by  parsing  and analyzing data from career sites, URLs, and files.•Managing Continuous Integration (CI) pipeline using Jenkins and Continuous Delivery (CD) pipelines using tools like Spinnaker and ArgoCD.•Contributed on development of monitoring, tracking and debugging LLM applications product and also agent development playground with open source tools for LLMs based applications.•Conversion existing code base to complete async version and played a pivotal role in exploring, analysing,optimizing and enhancing existing machine-learning projects and algorithms.
+""")
+
 
 st.markdown('#')
 st.markdown("<h2 style='margin-bottom:0'>🔧 Skills:</h2>", unsafe_allow_html=True)
