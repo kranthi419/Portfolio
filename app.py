@@ -5,6 +5,7 @@ import streamlit.components.v1 as components
 
 from chatbot.qa_agent import add_message, display_chat_history, clear_chat, run, check_if_openai_api_key_valid
 from utils.helpers import stream_data, initialize_variable
+from utils.email_util import email_form
 from constants import intro_message, linkedin_url
 
 st.set_page_config(
@@ -26,9 +27,13 @@ if st.session_state.shown_intro_message:
 
 with st.sidebar:
     components.html(linkedin_url, height=320)
+    if st.button("Want to send a message?📩✍"):
+        email_form()
     st.caption('Wish to connect?')
     st.write('📧: kavalikranthikumar3@gmail.com')
     st.write('📞: +91-9505530176')
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
 
 resume_page = st.Page(page="app_pages/Resume.py", title="View Resume:")
 home_page = st.Page(page="app_pages/Home.py", title="Home:")
@@ -39,13 +44,12 @@ pg.run()
 initialize_variable(name="messages", default=[])
 
 # todo: Make the OpenAI API key a session state variable
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 openai_api_key_set = True
 if openai_api_key.startswith("sk-") and check_if_openai_api_key_valid(openai_api_key):
     openai_api_key_set = False
     os.environ["OPENAI_API_KEY"] = openai_api_key
 else:
-    st.sidebar.warning("Please enter your OpenAI API key!", icon="⚠")
+    st.sidebar.warning("Please enter your OpenAI API key!, To enable 🤖ResumeGPT", icon="⚠")
 
 # Custom CSS for larger popover and other styling
 st.markdown("""
